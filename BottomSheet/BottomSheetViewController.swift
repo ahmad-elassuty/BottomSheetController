@@ -33,7 +33,7 @@ class BottomSheetViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animateWithDuration(0.3) { [weak self] in
+        UIView.animateWithDuration(0.6) { [weak self] in
             let frame = self?.view.frame
             let yComponent = self?.partialView
             self?.view.frame = CGRectMake(0, yComponent!, frame!.width, frame!.height)
