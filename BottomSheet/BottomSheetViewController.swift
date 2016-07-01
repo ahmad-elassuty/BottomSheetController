@@ -9,6 +9,7 @@
 import UIKit
 
 class BottomSheetViewController: UIViewController {
+    // holdView can be UIImageView instead
     @IBOutlet weak var holdView: UIView!
     @IBOutlet weak var left: UIButton!
     @IBOutlet weak var right: UIButton!
