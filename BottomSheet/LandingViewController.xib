@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandingViewController" customModule="BottomSheet" customModuleProvider="target">
@@ -14,7 +14,31 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKl-bn-fF5">
+                    <rect key="frame" x="460" y="402" width="110" height="128"/>
+                    <color key="backgroundColor" red="1" green="0.91697186429999999" blue="0.023712397060000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="ZHb-ly-lrq"/>
+                        <constraint firstAttribute="height" constant="128" id="zd2-LH-Zj4"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4Y-6Z-NDO">
+                    <rect key="frame" x="40" y="426" width="106" height="79"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.020532956710000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="79" id="foD-WU-UKF"/>
+                        <constraint firstAttribute="width" constant="106" id="wLc-YM-zph"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+            <constraints>
+                <constraint firstItem="A4Y-6Z-NDO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="4ML-dG-Oje"/>
+                <constraint firstItem="A4Y-6Z-NDO" firstAttribute="centerY" secondItem="nKl-bn-fF5" secondAttribute="centerY" id="dDw-qk-AFU"/>
+                <constraint firstAttribute="trailing" secondItem="nKl-bn-fF5" secondAttribute="trailing" constant="30" id="dsu-Fp-drU"/>
+                <constraint firstAttribute="bottom" secondItem="nKl-bn-fF5" secondAttribute="bottom" constant="70" id="p2n-Fn-6U2"/>
+            </constraints>
         </view>
     </objects>
 </document>
