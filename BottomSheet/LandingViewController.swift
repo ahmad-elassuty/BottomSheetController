@@ -15,7 +15,7 @@ class LandingViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addBottomSheetView()
     }
@@ -24,18 +24,17 @@ class LandingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    func addBottomSheetView() {
-        let bottomSheetVC = BottomSheetViewController()
+    func addBottomSheetView(scrollable: Bool? = true) {
+        let bottomSheetVC = scrollable! ? ScrollableBottomSheetViewController() : BottomSheetViewController()
         
         self.addChildViewController(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)
-        bottomSheetVC.didMoveToParentViewController(self)
+        bottomSheetVC.didMove(toParentViewController: self)
 
         let height = view.frame.height
         let width  = view.frame.width
-        bottomSheetVC.view.frame = CGRectMake(0, self.view.frame.maxY, width, height)
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
 
 }
