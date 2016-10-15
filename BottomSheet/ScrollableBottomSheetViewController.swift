@@ -73,8 +73,10 @@ class ScrollableBottomSheetViewController: UIViewController {
                     self.view.frame = CGRect(x: 0, y: self.fullView, width: self.view.frame.width, height: self.view.frame.height)
                 }
                 
-                }, completion: { _ in
-                   
+                }, completion: { [weak self] _ in
+                    if ( velocity.y < 0 ) {
+                        self?.enableTableView()
+                    }
             })
         }
     }
