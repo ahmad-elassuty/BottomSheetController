@@ -11,9 +11,7 @@ import UIKit
 class ScrollableBottomSheetViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    var gesture : UIPanGestureRecognizer!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let fullView: CGFloat = 100
     var partialView: CGFloat {
@@ -27,10 +25,7 @@ class ScrollableBottomSheetViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "default")
         
-        self.tableView.canCancelContentTouches = false
-        self.tableView.delaysContentTouches = false
-        
-        gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
+        let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
     }
@@ -98,14 +93,10 @@ class ScrollableBottomSheetViewController: UIViewController {
     
     func disableTableView() {
         self.tableView.isScrollEnabled = false
-        self.tableView.canCancelContentTouches = false
-        print("D")
     }
 
     func enableTableView() {
         self.tableView.isScrollEnabled = true
-//        self.tableView.canCancelContentTouches = true
-        print("E")
     }
 
 }
@@ -131,6 +122,8 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
 
 extension ScrollableBottomSheetViewController: UIGestureRecognizerDelegate {
     
+    
+    // Do the trick
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 
         if view.frame.minY == partialView {
@@ -140,12 +133,13 @@ extension ScrollableBottomSheetViewController: UIGestureRecognizerDelegate {
         
         let gesture = (gestureRecognizer as! UIPanGestureRecognizer)
         let direction = gesture.velocity(in: view).y
+
         if (view.frame.minY == fullView && tableView.contentOffset.y == 0 && direction > 0) {
             disableTableView()
-            return true
+        } else {
+            enableTableView()
         }
         
-        enableTableView()
         return false
     }
     

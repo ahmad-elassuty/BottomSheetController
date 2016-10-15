@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScrollableBottomSheetViewController" customModule="BottomSheet" customModuleProvider="target">
             <connections>
                 <outlet property="headerView" destination="Jqb-lC-sL5" id="2Bt-iO-hyv"/>
+                <outlet property="searchBar" destination="lCb-mm-wKD" id="kw1-PU-tqZ"/>
                 <outlet property="tableView" destination="GSW-2o-otm" id="qZN-2R-jqt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
