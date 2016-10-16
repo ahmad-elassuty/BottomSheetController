@@ -48,7 +48,7 @@ class BottomSheetViewController: UIViewController {
     }
     
     @IBAction func rightButton(_ sender: AnyObject) {
-        print("tabbed")
+        print("clicked")
     }
     
     @IBAction func close(_ sender: AnyObject) {
