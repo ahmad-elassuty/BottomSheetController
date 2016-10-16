@@ -75,7 +75,7 @@ class ScrollableBottomSheetViewController: UIViewController {
                 
                 }, completion: { [weak self] _ in
                     if ( velocity.y < 0 ) {
-                        self?.enableTableView()
+                        self?.tableView.isScrollEnabled = true
                     }
             })
         }
@@ -90,15 +90,6 @@ class ScrollableBottomSheetViewController: UIViewController {
         visualEffect.frame = UIScreen.main.bounds
         bluredView.frame = UIScreen.main.bounds
         view.insertSubview(bluredView, at: 0)
-    }
-    
-    
-    func disableTableView() {
-        self.tableView.isScrollEnabled = false
-    }
-
-    func enableTableView() {
-        self.tableView.isScrollEnabled = true
     }
 
 }
@@ -131,9 +122,9 @@ extension ScrollableBottomSheetViewController: UIGestureRecognizerDelegate {
 
         let y = view.frame.minY
         if (y == fullView && tableView.contentOffset.y == 0 && direction > 0) || (y == partialView) {
-            disableTableView()
+            tableView.isScrollEnabled = false
         } else {
-            enableTableView()
+            tableView.isScrollEnabled = true
         }
         
         return false
