@@ -25,6 +25,8 @@ class ScrollableBottomSheetViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "default")
         
+        searchBar.isUserInteractionEnabled = false
+        
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
