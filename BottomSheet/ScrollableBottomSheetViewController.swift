@@ -123,20 +123,14 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
 }
 
 extension ScrollableBottomSheetViewController: UIGestureRecognizerDelegate {
-    
-    
-    // Do the trick
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 
-        if view.frame.minY == partialView {
-            disableTableView()
-            return false
-        }
-        
+    // Solution
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         let gesture = (gestureRecognizer as! UIPanGestureRecognizer)
         let direction = gesture.velocity(in: view).y
 
-        if (view.frame.minY == fullView && tableView.contentOffset.y == 0 && direction > 0) {
+        let y = view.frame.minY
+        if (y == fullView && tableView.contentOffset.y == 0 && direction > 0) || (y == partialView) {
             disableTableView()
         } else {
             enableTableView()
