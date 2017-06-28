@@ -1,0 +1,22 @@
+{
+  "name": "BottomSheetController",
+  "version": "0.0.1",
+  "summary": "Bottom sheet like iOS 10 Maps app.",
+  "homepage": "https://github.com/AhmedElassuty/IOS-BottomSheet",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ahmed Elassuty": "ahmad.elassuty@gmail.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "",
+    "tag": "0.0.1"
+  },
+  "source_files": "Source/*.swift",
+  "requires_arc": true
+}

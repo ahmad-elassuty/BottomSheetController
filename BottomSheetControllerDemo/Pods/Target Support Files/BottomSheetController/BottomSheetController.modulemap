@@ -1,0 +1,6 @@
+framework module BottomSheetController {
+  umbrella header "BottomSheetController-umbrella.h"
+
+  export *
+  module * { export * }
+}

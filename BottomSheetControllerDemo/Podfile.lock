@@ -1,0 +1,16 @@
+PODS:
+  - BottomSheetController (0.0.1)
+
+DEPENDENCIES:
+  - BottomSheetController (from `../BottomSheetController`)
+
+EXTERNAL SOURCES:
+  BottomSheetController:
+    :path: "../BottomSheetController"
+
+SPEC CHECKSUMS:
+  BottomSheetController: b86f31f5638387e7c0ce65e245af01405999b4d2
+
+PODFILE CHECKSUM: c8573522e024d294f2d737c39bcb166bba15a4ca
+
+COCOAPODS: 1.2.0
