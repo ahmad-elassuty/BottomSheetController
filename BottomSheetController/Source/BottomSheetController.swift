@@ -121,27 +121,9 @@ private extension BottomSheetController {
             return
         }
         
-        let currentY    = sheetView.frame.minY
-        let targetY     = config.nextY(from: currentY, panDirection: direction)
-        let finalHeight = config.sizeFor(y: targetY).height
-        let anchorY     = targetY + finalHeight/2
-        let targetPoint = CGPoint(x: view.center.x, y: anchorY)
-        
-        let behavior    = BottomSheetBehavior(item: sheetView, sheetConfiguration: config) { currentMinY in
-            self.delegate?.bottomSheet?(bottomSheetController: self,
-                                        viewController: sheetController,
-                                        didMoveTo: currentMinY,
-                                        direction: direction)
-        }
-        
-        behavior.updateTargetPoint(targetPoint)
-        behavior.updateVelocity(velocity)
-        
-        delegate?.bottomSheet?(bottomSheetController: self,
-                               viewController: sheetController,
-                               animationWillStart: targetY,
-                               direction: direction)
-        sheetAnimator.addBehavior(behavior)
+        let targetY     = config.nextY(from: sheetView.frame.minY, panDirection: direction)
+        let targetPoint = CGPoint(x: 0, y: targetY)
+        moveSheet(to: targetPoint, velocity: velocity)
     }
 }
 
@@ -165,6 +147,22 @@ public extension BottomSheetController {
             let targetPoint = CGPoint(x: 0, y: yTranslation)
             self?.translateSheetView(with: targetPoint)
             }, completion: completion)
+    }
+}
+
+public extension BottomSheetController {
+    func expand() {
+        guard let config = topSheetConfig else { return }
+        sheetAnimator.removeAllBehaviors()
+        let targetPoint = CGPoint(x: 0, y: config.minYBound)
+        moveSheet(to: targetPoint)
+    }
+    
+    func collapse() {
+        guard let config = topSheetConfig else { return }
+        sheetAnimator.removeAllBehaviors()
+        let targetPoint = CGPoint(x: 0, y: config.maxYBound)
+        moveSheet(to: targetPoint)
     }
 }
 
@@ -218,5 +216,36 @@ private extension BottomSheetController {
         viewController.willMove(toParentViewController: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParentViewController()
+    }
+    
+    func moveSheet(to target: CGPoint, velocity: CGPoint = .zero) {
+        guard let sheetController = topSheetController,
+            let sheetView = topSheetView,
+            let config = topSheetConfig else {
+                return
+        }
+        
+        let currentY    = sheetView.frame.minY
+        let direction: BottomSheetPanDirection = target.y > currentY ? .down : .up
+        
+        let finalHeight = config.sizeFor(y: target.y).height
+        let anchorY     = target.y + finalHeight/2
+        let targetPoint = CGPoint(x: view.center.x, y: anchorY)
+        
+        let behavior    = BottomSheetBehavior(item: sheetView, sheetConfiguration: config) { currentMinY in
+            self.delegate?.bottomSheet?(bottomSheetController: self,
+                                        viewController: sheetController,
+                                        didMoveTo: currentMinY,
+                                        direction: direction)
+        }
+        
+        behavior.updateTargetPoint(targetPoint)
+        behavior.updateVelocity(velocity)
+        
+        delegate?.bottomSheet?(bottomSheetController: self,
+                               viewController: sheetController,
+                               animationWillStart: target.y,
+                               direction: direction)
+        sheetAnimator.addBehavior(behavior)
     }
 }

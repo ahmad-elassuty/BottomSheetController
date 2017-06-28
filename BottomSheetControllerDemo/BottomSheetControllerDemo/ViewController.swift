@@ -31,4 +31,8 @@ class ViewController: UIViewController {
                                     animated: animated)
         }
     }
+    
+    @IBAction func expandSheet(_ sender: Any) {
+        (parent as? BottomSheetController)?.expand()
+    }
 }

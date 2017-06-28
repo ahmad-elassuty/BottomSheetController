@@ -14,4 +14,8 @@ class BottomViewController: UIViewController {
         super.viewDidLayoutSubviews()
         view.roundCorners([.topLeft, .topRight], radius: 12)
     }
+    
+    @IBAction func collapseSheet(_ sender: Any) {
+        (parent as? BottomSheetController)?.collapse()
+    }
 }

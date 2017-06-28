@@ -1,5 +1,5 @@
 //
-//  BottomSheet+Utils.swift
+//  BottomSheetController+Utils.swift
 //  BottomSheetController
 //
 //  Created by Ahmed Elassuty on 28/06/2017.

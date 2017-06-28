@@ -10,27 +10,13 @@ import Foundation
 import BottomSheetController
 
 class BottomViewControllerConfiguration: NSObject, BottomSheetConfiguration {
-    var initialY: CGFloat {
-        return maxY
-    }
-    
     func nextY(from currentY: CGFloat, panDirection direction: BottomSheetPanDirection) -> CGFloat {
         let screenMidY = (UIScreen.main.bounds.height/2)
         switch direction {
         case .up:
-            return currentY < screenMidY ? minY : screenMidY
+            return currentY < screenMidY ? minYBound : screenMidY
         case .down:
-            return currentY > screenMidY ? maxY : screenMidY
+            return currentY > screenMidY ? maxYBound : screenMidY
         }
-    }
-}
-
-private extension BottomViewControllerConfiguration {
-    var minY: CGFloat {
-        return 20
-    }
-    
-    var maxY: CGFloat {
-        return UIScreen.main.bounds.height - 200
     }
 }

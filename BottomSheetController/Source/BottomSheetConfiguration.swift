@@ -8,6 +8,8 @@
 
 public protocol BottomSheetConfiguration {
     var initialY                        : CGFloat       { get }
+    var minYBound                       : CGFloat       { get }
+    var maxYBound                       : CGFloat       { get }
     var automaticallyAdjustSheetSize    : Bool          { get }
     
     func canMoveTo(y: CGFloat) -> Bool
@@ -17,7 +19,15 @@ public protocol BottomSheetConfiguration {
 // MARK: - Default implementation
 public extension BottomSheetConfiguration {
     var initialY: CGFloat {
-        return UIScreen.main.bounds.maxY - 200
+        return maxYBound
+    }
+    
+    var minYBound: CGFloat {
+        return 20
+    }
+    
+    var maxYBound: CGFloat {
+        return UIScreen.main.bounds.height - 100
     }
     
     var automaticallyAdjustSheetSize: Bool {
@@ -25,8 +35,7 @@ public extension BottomSheetConfiguration {
     }
     
     func canMoveTo(y: CGFloat) -> Bool {
-        let screenBounds = UIScreen.main.bounds
-        return y >= screenBounds.minY && y <= screenBounds.maxY
+        return y >= minYBound && y <= maxYBound
     }
 }
 
