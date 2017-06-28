@@ -33,6 +33,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func expandSheet(_ sender: Any) {
-        (parent as? BottomSheetController)?.expand()
+        bottomSheetController?.expand()
     }
 }

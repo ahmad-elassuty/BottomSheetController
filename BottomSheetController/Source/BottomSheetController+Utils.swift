@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ahmed Elassuty. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension CGPoint {
     static func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
@@ -15,5 +15,11 @@ extension CGPoint {
     
     static func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+    }
+}
+
+public extension UIViewController {
+    var bottomSheetController: BottomSheetController? {
+        return parent as? BottomSheetController
     }
 }

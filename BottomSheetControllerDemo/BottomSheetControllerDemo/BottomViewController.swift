@@ -16,6 +16,6 @@ class BottomViewController: UIViewController {
     }
     
     @IBAction func collapseSheet(_ sender: Any) {
-        (parent as? BottomSheetController)?.collapse()
+        bottomSheetController?.collapse()
     }
 }

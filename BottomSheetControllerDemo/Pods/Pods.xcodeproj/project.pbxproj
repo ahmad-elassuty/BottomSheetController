@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		132802EDF3D57B2A9E69C49475027630 /* Pods-BottomSheetControllerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE8048E6B637B3ADF023109172A4876 /* Pods-BottomSheetControllerDemo-dummy.m */; };
-		1DCFEEA3C29DB84F9B2821AA97AAB42B /* BottomSheetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC58995E663D0563A3747D71EFCD0F /* BottomSheetConfiguration.swift */; };
-		2085F783113E6642957B8E48F0556DB3 /* BottomSheetBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0B8074072E7A0B98D5882545EB2C37 /* BottomSheetBehavior.swift */; };
-		2F00A8B62D30DFDE67B766C10AE73500 /* BottomSheetController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2AD85FD9525BFA525A4F71698B0F77 /* BottomSheetController-dummy.m */; };
+		4761EE22D30F749A43B622C5D61E4EDC /* BottomSheetBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA9C3AAF826270C0743CBF81DE47B26 /* BottomSheetBehavior.swift */; };
 		53F5AF1B7A056113E11C525180410A93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		58AA04C38B8694E30C55FDD97DF0B48D /* BottomSheetPanDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06719082CF73B65FA1BF16C5F370D14 /* BottomSheetPanDirection.swift */; };
-		77FC4D08CAE67369531AE801BC74C7A2 /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584787CD49D6E7DF6D5267FC24127AED /* BottomSheetController.swift */; };
-		B85C41E3441B9977F9ADFD6D52CC5825 /* BottomSheetControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCA6621F525B83EE15D5773DE37C1A /* BottomSheetControllerDelegate.swift */; };
+		61A08CD20B71BD5A52C93C36E67990EA /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B438AAC9859F097BB414CDCC9B73 /* BottomSheetController.swift */; };
+		8911468E2AA9C9EA65B502935BE32A83 /* BottomSheetPanDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7A14658B2A5C695DBB18DD3B1F1D0B /* BottomSheetPanDirection.swift */; };
 		C7EFAEE0BC0A8FB572DFAD416669887D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D9EF34B725D9A31D0B9444C1D61DE295 /* BottomSheet+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF43166974E1DCDDE3CDE81AF6918F /* BottomSheet+Utils.swift */; };
+		CD0515CA349D2FC3FED3936304D8CCCB /* BottomSheetController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0EBE8B71549B7F7A3F6182F4A80DB /* BottomSheetController+Utils.swift */; };
 		DA2A0B282D9B239475CBEE235C89D530 /* BottomSheetController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A66DE32C9256B9C2F3544359F3C4862 /* BottomSheetController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5EE3620D1934C8A25E4BE69866CA0AF /* BottomSheetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E7BC9530C7CDE59ED88EE16EE028A9 /* BottomSheetConfiguration.swift */; };
 		E8AD0054F8FB9F4D75F18F5BB3313F05 /* Pods-BottomSheetControllerDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C48B36D916566CFD132B59BF83C1112B /* Pods-BottomSheetControllerDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC2A29F873BC7B767E512EC606F21BE5 /* BottomSheetControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ABFD30D791D0DF2B72BACAECCA9A76 /* BottomSheetControllerDelegate.swift */; };
+		FF77C49DD61ED5F2F515F84D472CAB1E /* BottomSheetController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2AD85FD9525BFA525A4F71698B0F77 /* BottomSheetController-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,20 +32,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07E7BC9530C7CDE59ED88EE16EE028A9 /* BottomSheetConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetConfiguration.swift; sourceTree = "<group>"; };
 		0C2AD85FD9525BFA525A4F71698B0F77 /* BottomSheetController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BottomSheetController-dummy.m"; sourceTree = "<group>"; };
 		133AAC029AEAB13475788EED6D7FB7FF /* Pods-BottomSheetControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BottomSheetControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		1346B34B2304E71A9C1DC3D193A25049 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C0B8074072E7A0B98D5882545EB2C37 /* BottomSheetBehavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetBehavior.swift; sourceTree = "<group>"; };
 		1DF262C49530C002251199CB019B090E /* Pods-BottomSheetControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BottomSheetControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
-		2DDF43166974E1DCDDE3CDE81AF6918F /* BottomSheet+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BottomSheet+Utils.swift"; sourceTree = "<group>"; };
 		4CE8048E6B637B3ADF023109172A4876 /* Pods-BottomSheetControllerDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BottomSheetControllerDemo-dummy.m"; sourceTree = "<group>"; };
 		57A55ED0498110DC6134C1D441344D46 /* Pods-BottomSheetControllerDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BottomSheetControllerDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		584787CD49D6E7DF6D5267FC24127AED /* BottomSheetController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
 		6A66DE32C9256B9C2F3544359F3C4862 /* BottomSheetController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BottomSheetController-umbrella.h"; sourceTree = "<group>"; };
+		6D7A14658B2A5C695DBB18DD3B1F1D0B /* BottomSheetPanDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetPanDirection.swift; sourceTree = "<group>"; };
+		86D0EBE8B71549B7F7A3F6182F4A80DB /* BottomSheetController+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BottomSheetController+Utils.swift"; sourceTree = "<group>"; };
 		8C9FD15996B6BBA5B661E74F29BF0407 /* BottomSheetController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BottomSheetController-prefix.pch"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93ABFD30D791D0DF2B72BACAECCA9A76 /* BottomSheetControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetControllerDelegate.swift; sourceTree = "<group>"; };
+		9CF2B438AAC9859F097BB414CDCC9B73 /* BottomSheetController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
 		9F69E2C2775D6CBAC1053DCC39EE7DE5 /* Pods-BottomSheetControllerDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BottomSheetControllerDemo.modulemap"; sourceTree = "<group>"; };
-		C2AC58995E663D0563A3747D71EFCD0F /* BottomSheetConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetConfiguration.swift; sourceTree = "<group>"; };
+		BDA9C3AAF826270C0743CBF81DE47B26 /* BottomSheetBehavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetBehavior.swift; sourceTree = "<group>"; };
 		C3D8670ED589BE1AC5717E731ED39666 /* Pods-BottomSheetControllerDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BottomSheetControllerDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C48B36D916566CFD132B59BF83C1112B /* Pods-BottomSheetControllerDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BottomSheetControllerDemo-umbrella.h"; sourceTree = "<group>"; };
 		C65A081956A99847F7680C4C5820F3E3 /* Pods_BottomSheetControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BottomSheetControllerDemo.framework; path = "Pods-BottomSheetControllerDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,11 +55,9 @@
 		CE8416CB3ABCFEFEF272643FF4373BBB /* Pods-BottomSheetControllerDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BottomSheetControllerDemo-frameworks.sh"; sourceTree = "<group>"; };
 		D1509DEE3EAF8A51D5B24919D61F15C8 /* Pods-BottomSheetControllerDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BottomSheetControllerDemo-resources.sh"; sourceTree = "<group>"; };
 		D3107FBA8D050D728188BBBCCE6C70FB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9CCA6621F525B83EE15D5773DE37C1A /* BottomSheetControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetControllerDelegate.swift; sourceTree = "<group>"; };
 		E2BE938AB7358A83D94EBC8B56116CBC /* BottomSheetController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BottomSheetController.xcconfig; sourceTree = "<group>"; };
 		ECDEE0B3246B370C163572D369CE836C /* BottomSheetController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BottomSheetController.modulemap; sourceTree = "<group>"; };
 		EDC3ED68153AD332678B27E7455B3A64 /* BottomSheetController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BottomSheetController.framework; path = BottomSheetController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F06719082CF73B65FA1BF16C5F370D14 /* BottomSheetPanDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BottomSheetPanDirection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,15 +89,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		292CD411E4D66D3676F5F7B25655FE80 /* Source */ = {
+		22C3430E08A8D8A3C238994FF4BB3594 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2DDF43166974E1DCDDE3CDE81AF6918F /* BottomSheet+Utils.swift */,
-				1C0B8074072E7A0B98D5882545EB2C37 /* BottomSheetBehavior.swift */,
-				C2AC58995E663D0563A3747D71EFCD0F /* BottomSheetConfiguration.swift */,
-				584787CD49D6E7DF6D5267FC24127AED /* BottomSheetController.swift */,
-				D9CCA6621F525B83EE15D5773DE37C1A /* BottomSheetControllerDelegate.swift */,
-				F06719082CF73B65FA1BF16C5F370D14 /* BottomSheetPanDirection.swift */,
+				BDA9C3AAF826270C0743CBF81DE47B26 /* BottomSheetBehavior.swift */,
+				07E7BC9530C7CDE59ED88EE16EE028A9 /* BottomSheetConfiguration.swift */,
+				9CF2B438AAC9859F097BB414CDCC9B73 /* BottomSheetController.swift */,
+				86D0EBE8B71549B7F7A3F6182F4A80DB /* BottomSheetController+Utils.swift */,
+				93ABFD30D791D0DF2B72BACAECCA9A76 /* BottomSheetControllerDelegate.swift */,
+				6D7A14658B2A5C695DBB18DD3B1F1D0B /* BottomSheetPanDirection.swift */,
 			);
 			name = Source;
 			path = Source;
@@ -167,7 +167,7 @@
 		D899AA6B34600F9C09B722ADB74D5F4F /* BottomSheetController */ = {
 			isa = PBXGroup;
 			children = (
-				292CD411E4D66D3676F5F7B25655FE80 /* Source */,
+				22C3430E08A8D8A3C238994FF4BB3594 /* Source */,
 				EA358859A97F9D8861F32B145A01F0FD /* Support Files */,
 			);
 			name = BottomSheetController;
@@ -232,7 +232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04F35D5F688123B3C5903BDC45FA2D9D /* Build configuration list for PBXNativeTarget "BottomSheetController" */;
 			buildPhases = (
-				9344F9B03BECB3BBF5E249079482C829 /* Sources */,
+				59F204F61625993286C4C0FA8AA947D5 /* Sources */,
 				4BBA0FE9E33F0E4602E9BD2E5432781A /* Frameworks */,
 				0574629E74C0D84DE4BBAA80342B2236 /* Headers */,
 			);
@@ -273,17 +273,17 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9344F9B03BECB3BBF5E249079482C829 /* Sources */ = {
+		59F204F61625993286C4C0FA8AA947D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9EF34B725D9A31D0B9444C1D61DE295 /* BottomSheet+Utils.swift in Sources */,
-				2085F783113E6642957B8E48F0556DB3 /* BottomSheetBehavior.swift in Sources */,
-				1DCFEEA3C29DB84F9B2821AA97AAB42B /* BottomSheetConfiguration.swift in Sources */,
-				2F00A8B62D30DFDE67B766C10AE73500 /* BottomSheetController-dummy.m in Sources */,
-				77FC4D08CAE67369531AE801BC74C7A2 /* BottomSheetController.swift in Sources */,
-				B85C41E3441B9977F9ADFD6D52CC5825 /* BottomSheetControllerDelegate.swift in Sources */,
-				58AA04C38B8694E30C55FDD97DF0B48D /* BottomSheetPanDirection.swift in Sources */,
+				4761EE22D30F749A43B622C5D61E4EDC /* BottomSheetBehavior.swift in Sources */,
+				E5EE3620D1934C8A25E4BE69866CA0AF /* BottomSheetConfiguration.swift in Sources */,
+				CD0515CA349D2FC3FED3936304D8CCCB /* BottomSheetController+Utils.swift in Sources */,
+				FF77C49DD61ED5F2F515F84D472CAB1E /* BottomSheetController-dummy.m in Sources */,
+				61A08CD20B71BD5A52C93C36E67990EA /* BottomSheetController.swift in Sources */,
+				EC2A29F873BC7B767E512EC606F21BE5 /* BottomSheetControllerDelegate.swift in Sources */,
+				8911468E2AA9C9EA65B502935BE32A83 /* BottomSheetPanDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
