@@ -225,17 +225,16 @@ private extension BottomSheetController {
                 return
         }
         
-        let currentY    = sheetView.frame.minY
-        let direction: BottomSheetPanDirection = target.y > currentY ? .down : .up
+        let currentY = sheetView.frame.minY
+        let direction: BottomSheetPanDirection = target.y >= currentY ? .down : .up
         
         let finalHeight = config.sizeFor(y: target.y).height
         let anchorY     = target.y + finalHeight/2
         let targetPoint = CGPoint(x: view.center.x, y: anchorY)
-        
-        let behavior    = BottomSheetBehavior(item: sheetView, sheetConfiguration: config) { currentMinY in
+        let behavior    = BottomSheetBehavior(item: sheetView, sheetConfiguration: config) { newY in
             self.delegate?.bottomSheet?(bottomSheetController: self,
                                         viewController: sheetController,
-                                        didMoveTo: currentMinY,
+                                        didMoveTo: newY,
                                         direction: direction)
         }
         

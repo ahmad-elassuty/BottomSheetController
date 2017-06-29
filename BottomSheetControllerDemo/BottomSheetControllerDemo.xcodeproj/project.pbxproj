@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20933A891F03F2CB000B43DA /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20933A881F03F2CB000B43DA /* UIView+Utils.swift */; };
+		20933A8F1F0479C7000B43DA /* ScrollableBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20933A8E1F0479C7000B43DA /* ScrollableBottomViewController.swift */; };
 		20A0E4FD1EC0FAE800C58134 /* UIStoryboard+BottomSheetControllerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A0E4FC1EC0FAE800C58134 /* UIStoryboard+BottomSheetControllerDemo.swift */; };
 		20CDEC2A1E69B4A100ED2B3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDEC291E69B4A100ED2B3E /* AppDelegate.swift */; };
 		20CDEC2C1E69B4A100ED2B3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDEC2B1E69B4A100ED2B3E /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		20933A881F03F2CB000B43DA /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		20933A8E1F0479C7000B43DA /* ScrollableBottomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableBottomViewController.swift; sourceTree = "<group>"; };
 		20A0E4FC1EC0FAE800C58134 /* UIStoryboard+BottomSheetControllerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+BottomSheetControllerDemo.swift"; sourceTree = "<group>"; };
 		20CDEC261E69B4A100ED2B3E /* BottomSheetControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottomSheetControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CDEC291E69B4A100ED2B3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				20CDEC291E69B4A100ED2B3E /* AppDelegate.swift */,
 				20CDEC2B1E69B4A100ED2B3E /* ViewController.swift */,
 				20CDEC3F1E69BC7100ED2B3E /* BottomViewController.swift */,
+				20933A8E1F0479C7000B43DA /* ScrollableBottomViewController.swift */,
 				20CDEC2D1E69B4A100ED2B3E /* Main.storyboard */,
 				20CDEC301E69B4A100ED2B3E /* Assets.xcassets */,
 				20CDEC321E69B4A100ED2B3E /* LaunchScreen.storyboard */,
@@ -241,6 +244,7 @@
 				20CDEC2A1E69B4A100ED2B3E /* AppDelegate.swift in Sources */,
 				20CDEC401E69BC7100ED2B3E /* BottomViewController.swift in Sources */,
 				20E947A11E69BDF400374D3C /* BottomViewControllerDelegate.swift in Sources */,
+				20933A8F1F0479C7000B43DA /* ScrollableBottomViewController.swift in Sources */,
 				20A0E4FD1EC0FAE800C58134 /* UIStoryboard+BottomSheetControllerDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,4 +20,8 @@ extension UIStoryboard {
     static var bottomSheetViewController: BottomViewController {
         return main.instantiateViewController(withIdentifier: "BottomViewController") as! BottomViewController
     }
+    
+    static var scrollableBottomSheetViewController: ScrollableBottomViewController {
+        return main.instantiateViewController(withIdentifier: "ScrollableBottomViewController") as! ScrollableBottomViewController
+    }
 }

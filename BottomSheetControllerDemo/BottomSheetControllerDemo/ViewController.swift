@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let sheetController = parent as? BottomSheetController {
-            let sheetViewController = UIStoryboard.bottomSheetViewController
+            let sheetViewController = UIStoryboard.scrollableBottomSheetViewController
             sheetController.present(sheetViewController,
                                     configuration: bottomSheetConfiguration,
                                     animated: animated)
