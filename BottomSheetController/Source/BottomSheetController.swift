@@ -135,7 +135,12 @@ extension BottomSheetController: UIGestureRecognizerDelegate {
     
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let config = topSheetConfig,
-            let scrollableView = config.scrollableView else {
+            let scrollableView = config.scrollableView,
+            let panGesture = gestureRecognizer as? UIPanGestureRecognizer else {
+            return true
+        }
+        
+        if !scrollableView.frame.contains(panGesture.touchPoint) {
             return true
         }
         

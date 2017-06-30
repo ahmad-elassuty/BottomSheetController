@@ -28,4 +28,8 @@ extension UIPanGestureRecognizer {
     var direction: BottomSheetPanDirection {
         return velocity(in: view).y < 0 ? .up : .down
     }
+    
+    var touchPoint: CGPoint {
+        return location(in: view)
+    }
 }
