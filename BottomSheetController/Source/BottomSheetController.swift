@@ -144,8 +144,11 @@ extension BottomSheetController: UIGestureRecognizerDelegate {
             return true
         }
         
-        let offsetY = scrollableView.contentOffset.y
-        return offsetY < 0 || (offsetY == 0 && panGesture.direction == .down) ||
+        let offsetY         = scrollableView.contentOffset.y
+        let isBouncing      = offsetY < 0
+        let isDragingDown   = panGesture.direction == .down
+        return (isBouncing && isDragingDown) ||
+            (offsetY == 0 && isDragingDown) ||
             !config.allowsContentScrolling
     }
 }
