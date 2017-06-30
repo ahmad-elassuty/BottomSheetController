@@ -99,7 +99,7 @@ private extension BottomSheetController {
         let direction: BottomSheetPanDirection = velocity.y < 0 ? .up : .down
         let newY =  sheetView.frame.minY + translation.y
         
-        if config.canMoveTo(y: newY) {
+        if config.canMoveTo(newY) {
             delegate?.bottomSheet?(bottomSheetController: self,
                                    viewController: sheetController,
                                    willMoveTo: newY,
@@ -113,7 +113,7 @@ private extension BottomSheetController {
         }
         recognizer.setTranslation(.zero, in: sheetView)
         
-        if recognizer.state == .began || recognizer.state == .cancelled {
+        if recognizer.state == .began {
             sheetAnimator.removeAllBehaviors()
             return
         }
@@ -225,7 +225,7 @@ private extension BottomSheetController {
                 return
         }
         
-        sheetView.frame.origin = sheetView.frame.origin + translation
+        sheetView.frame.origin += translation
         sheetView.frame.size   = config.sizeOf(sheetView: sheetView)
         sheetView.layoutIfNeeded()
     }

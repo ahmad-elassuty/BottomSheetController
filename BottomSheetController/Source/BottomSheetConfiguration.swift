@@ -14,7 +14,7 @@ public protocol BottomSheetConfiguration {
     var allowsContentScrolling          : Bool              { get set }
     var scrollableView                  : UIScrollView?     { get }
     
-    func canMoveTo(y: CGFloat) -> Bool
+    func canMoveTo(_ y: CGFloat) -> Bool
     func nextY(from currentY: CGFloat, panDirection direction: BottomSheetPanDirection) -> CGFloat
 }
 
@@ -40,7 +40,7 @@ public extension BottomSheetConfiguration {
         return nil
     }
     
-    func canMoveTo(y: CGFloat) -> Bool {
+    func canMoveTo(_ y: CGFloat) -> Bool {
         return y >= minYBound && y <= maxYBound
     }
 }

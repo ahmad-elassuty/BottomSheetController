@@ -10,8 +10,8 @@ class BottomSheetBehavior: UIDynamicBehavior {
     var item                : UIDynamicItem
     var itemBehavior        : UIDynamicItemBehavior
     var attachmentBehavior  : UIAttachmentBehavior
-    var targetPoint         : CGPoint   = .zero
-    var velocity            : CGPoint   = .zero
+    var targetPoint         : CGPoint               = .zero
+    var velocity            : CGPoint               = .zero
     
     init(item: UIDynamicItem, sheetConfiguration config: BottomSheetConfiguration, onAnimationStep: ((CGFloat) -> ())? = nil) {
         self.item = item
