@@ -175,18 +175,31 @@
                                     <constraint firstAttribute="height" constant="50" id="kgu-AF-86I"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqw-kS-YAu">
+                                <rect key="frame" x="301" y="10" width="64" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Collapse">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="collapseSheet" destination="qHg-CL-vbH" eventType="touchUpInside" id="UNj-pY-8Py"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Iha-J2-ndt" firstAttribute="leading" secondItem="0GS-X0-NQ3" secondAttribute="leading" id="22d-zV-q7y"/>
+                            <constraint firstItem="rqw-kS-YAu" firstAttribute="centerY" secondItem="Iha-J2-ndt" secondAttribute="centerY" id="D99-fC-LZS"/>
                             <constraint firstAttribute="bottom" secondItem="ViR-M1-lfG" secondAttribute="bottom" id="KN3-YN-I1i"/>
                             <constraint firstItem="ViR-M1-lfG" firstAttribute="top" secondItem="Iha-J2-ndt" secondAttribute="bottom" id="b05-Ek-aR8"/>
                             <constraint firstAttribute="trailing" secondItem="Iha-J2-ndt" secondAttribute="trailing" id="i1s-tn-Hgf"/>
                             <constraint firstItem="ViR-M1-lfG" firstAttribute="leading" secondItem="0GS-X0-NQ3" secondAttribute="leading" id="lH3-O5-hoq"/>
                             <constraint firstAttribute="trailing" secondItem="ViR-M1-lfG" secondAttribute="trailing" id="lLE-2n-hmd"/>
                             <constraint firstItem="Iha-J2-ndt" firstAttribute="top" secondItem="0GS-X0-NQ3" secondAttribute="top" id="lgM-YH-gMA"/>
+                            <constraint firstAttribute="trailing" secondItem="rqw-kS-YAu" secondAttribute="trailing" constant="10" id="oqq-7z-onR"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ViR-M1-lfG" id="iSg-zY-cdf"/>
                     </connections>

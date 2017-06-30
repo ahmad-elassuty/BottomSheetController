@@ -10,6 +10,13 @@ import Foundation
 import BottomSheetController
 
 class BottomViewControllerConfiguration: NSObject, BottomSheetConfiguration {
+    weak var viewController: ScrollableBottomViewController?
+    
+    var allowsContentScrolling = false
+    var scrollableView: UIScrollView? {
+        return viewController?.tableView
+    }
+
     var initialY: CGFloat {
         return UIScreen.main.bounds.height/2
     }

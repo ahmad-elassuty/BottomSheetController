@@ -23,3 +23,9 @@ public extension UIViewController {
         return parent as? BottomSheetController
     }
 }
+
+extension UIPanGestureRecognizer {
+    var direction: BottomSheetPanDirection {
+        return velocity(in: view).y < 0 ? .up : .down
+    }
+}

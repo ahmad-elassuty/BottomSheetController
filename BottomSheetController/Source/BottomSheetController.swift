@@ -22,8 +22,8 @@ public class BottomSheetController: UIViewController {
         }
     }
     
-    fileprivate var sheetAnimator   : UIDynamicAnimator!
-    fileprivate var panGesture      : UIPanGestureRecognizer!
+    fileprivate var sheetAnimator: UIDynamicAnimator!
+    fileprivate var panGesture: UIPanGestureRecognizer!
     
     var numberOfSheets: Int {
         return viewControllers.count
@@ -55,6 +55,7 @@ public class BottomSheetController: UIViewController {
         
         let panGestureAction = #selector(panGestureHandler)
         panGesture = UIPanGestureRecognizer(target: self, action: panGestureAction)
+        panGesture.delegate = self
     }
     
     public convenience init(rootViewController: UIViewController,
@@ -112,7 +113,7 @@ private extension BottomSheetController {
         }
         recognizer.setTranslation(.zero, in: sheetView)
         
-        if recognizer.state == .began {
+        if recognizer.state == .began || recognizer.state == .cancelled {
             sheetAnimator.removeAllBehaviors()
             return
         }
@@ -124,6 +125,23 @@ private extension BottomSheetController {
         let targetY     = config.nextY(from: sheetView.frame.minY, panDirection: direction)
         let targetPoint = CGPoint(x: 0, y: targetY)
         moveSheet(to: targetPoint, velocity: velocity)
+    }
+}
+
+extension BottomSheetController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let config = topSheetConfig,
+            let scrollableView = config.scrollableView else {
+            return true
+        }
+        
+        let offsetY = scrollableView.contentOffset.y
+        return offsetY < 0 || (offsetY == 0 && panGesture.direction == .down) ||
+            !config.allowsContentScrolling
     }
 }
 
@@ -192,6 +210,8 @@ private extension BottomSheetController {
         sheet.view.frame.origin = CGPoint(x: 0, y: sheetMinY)
         sheet.view.frame.size   = config.sizeOf(sheetView: sheet.view)
         sheet.view.addGestureRecognizer(panGesture)
+        var config = config
+        config.allowsContentScrolling = config.initialY == config.minYBound
     }
     
     func translateSheetView(with translation: CGPoint) {
@@ -210,6 +230,7 @@ private extension BottomSheetController {
         view.addSubview(viewController.view)
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.didMove(toParentViewController: self)
+        topSheetConfig?.scrollableView?.panGestureRecognizer.require(toFail: panGesture)
     }
     
     func remove(childViewController viewController: UIViewController) {
@@ -221,10 +242,11 @@ private extension BottomSheetController {
     func moveSheet(to target: CGPoint, velocity: CGPoint = .zero) {
         guard let sheetController = topSheetController,
             let sheetView = topSheetView,
-            let config = topSheetConfig else {
+            var config = topSheetConfig else {
                 return
         }
         
+        config.allowsContentScrolling = target.y == config.minYBound
         let currentY = sheetView.frame.minY
         let direction: BottomSheetPanDirection = target.y >= currentY ? .down : .up
         
@@ -240,7 +262,6 @@ private extension BottomSheetController {
         
         behavior.updateTargetPoint(targetPoint)
         behavior.updateVelocity(velocity)
-        
         delegate?.bottomSheet?(bottomSheetController: self,
                                viewController: sheetController,
                                animationWillStart: target.y,
