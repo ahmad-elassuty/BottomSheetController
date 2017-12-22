@@ -7,18 +7,21 @@
 //
 
 public protocol BottomSheetConfiguration {
+    // MARK: - Properties
     var initialY                        : CGFloat           { get }
     var minYBound                       : CGFloat           { get }
     var maxYBound                       : CGFloat           { get }
     var automaticallyAdjustSheetSize    : Bool              { get }
     var allowsContentScrolling          : Bool              { get set }
     var scrollableView                  : UIScrollView?     { get }
-    
+
+    // MARK: - Methods
     func canMoveTo(_ y: CGFloat) -> Bool
-    func nextY(from currentY: CGFloat, panDirection direction: BottomSheetPanDirection) -> CGFloat
+    func nextY(from currentY: CGFloat,
+        panDirection direction: BottomSheetPanDirection) -> CGFloat
 }
 
-// MARK: - Default implementation
+// MARK: - Properties Default implementation
 public extension BottomSheetConfiguration {
     var initialY: CGFloat {
         return minYBound
@@ -45,6 +48,7 @@ public extension BottomSheetConfiguration {
     }
 }
 
+// MARK: - Helper Methods
 extension BottomSheetConfiguration {
     func sizeOf(sheetView view: UIView) -> CGSize {
         return sizeFor(y: view.frame.minY)

@@ -11,39 +11,11 @@ public class BottomSheetController: UIViewController {
     public weak var delegate                : BottomSheetControllerDelegate?
     
     fileprivate var rootViewController      : UIViewController!
-    fileprivate var viewControllers         = [UIViewController]()
-    fileprivate var configurations          = [BottomSheetConfiguration]()
-    
-    fileprivate var currentSheetIndex  = 0 {
-        didSet {
-            if currentSheetIndex < 0 {
-                currentSheetIndex = 0
-            }
-        }
-    }
+    fileprivate var sheetController         : UIViewController?
+    fileprivate var configuration           : BottomSheetConfiguration?
     
     fileprivate var sheetAnimator: UIDynamicAnimator!
     fileprivate var panGesture: UIPanGestureRecognizer!
-    
-    var numberOfSheets: Int {
-        return viewControllers.count
-    }
-    
-    var isEmpty: Bool {
-        return numberOfSheets == 0
-    }
-    
-    var topSheetController: UIViewController? {
-        return isEmpty ? nil : viewControllers[currentSheetIndex]
-    }
-    
-    var topSheetView: UIView? {
-        return isEmpty ? nil : viewControllers[currentSheetIndex].view
-    }
-    
-    var topSheetConfig: BottomSheetConfiguration? {
-        return isEmpty ? nil : configurations[currentSheetIndex]
-    }
     
     // MARK: Deinitializer
     deinit {}
@@ -52,17 +24,15 @@ public class BottomSheetController: UIViewController {
     public convenience init(rootViewController: UIViewController) {
         self.init()
         self.rootViewController = rootViewController
-        
-        let panGestureAction = #selector(panGestureHandler)
-        panGesture = UIPanGestureRecognizer(target: self, action: panGestureAction)
-        panGesture.delegate = self
+        setupPanGesture()
     }
     
     public convenience init(rootViewController: UIViewController,
-                            bottomSheetViewController bottomSheet: UIViewController,
-                            bottomSheetConfiguration config: BottomSheetConfiguration) {
+                            sheetViewController viewController: UIViewController,
+                            configuration config: BottomSheetConfiguration) {
         self.init(rootViewController: rootViewController)
-        addSheet(bottomSheet, configuration: config)
+        sheetController = viewController
+        configuration = config
     }
 }
 
@@ -70,11 +40,16 @@ extension BottomSheetController {
     override public func loadView() {
         super.loadView()
         add(childViewController: rootViewController)
-        
-        if let sheetController = topSheetController, let config = topSheetConfig {
-            prepareSheetForPresentation(sheetController, configuration: config, animated: false)
-            add(childViewController: sheetController)
+
+        guard let sheetController = sheetController,
+            let configuration = configuration else {
+            return
         }
+
+        prepareSheetForPresentation(sheetController,
+                                    configuration: configuration,
+                                    animated: false)
+        add(childViewController: sheetController)
     }
     
     override public func viewDidLoad() {
@@ -84,12 +59,19 @@ extension BottomSheetController {
     }
 }
 
-// MARK: - Gestures Handlers
+// MARK: - Pan Gestures
 private extension BottomSheetController {
+    func setupPanGesture() {
+        let gestureAction = #selector(panGestureHandler)
+        panGesture = UIPanGestureRecognizer(target: self,
+                                            action: gestureAction)
+        panGesture.delegate = self
+    }
+
     @objc func panGestureHandler(_ recognizer: UIPanGestureRecognizer) {
-        guard let sheetController = topSheetController,
-            let sheetView = topSheetView,
-            let config = topSheetConfig else {
+        guard let sheetController = sheetController,
+            let sheetView = sheetController.view,
+            let config = configuration else {
                 return
         }
         
@@ -129,12 +111,13 @@ private extension BottomSheetController {
 }
 
 extension BottomSheetController: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                                  shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return false
     }
     
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        guard let config = topSheetConfig,
+        guard let config = configuration,
             let scrollableView = config.scrollableView,
             let panGesture = gestureRecognizer as? UIPanGestureRecognizer else {
             return true
@@ -159,7 +142,13 @@ public extension BottomSheetController {
                  configuration config: BottomSheetConfiguration,
                  animated: Bool = true,
                  completion: ((Bool) -> Void)? = nil) {
-        addSheet(viewController, configuration: config)
+        if let sheetController = sheetController {
+            remove(childViewController: sheetController)
+        }
+
+        sheetController = viewController
+        configuration = config
+
         prepareSheetForPresentation(viewController, configuration: config, animated: animated)
         add(childViewController: viewController)
         
@@ -178,14 +167,20 @@ public extension BottomSheetController {
 
 public extension BottomSheetController {
     func expand() {
-        guard let config = topSheetConfig else { return }
+        guard let config = configuration else {
+            return
+        }
+
         sheetAnimator.removeAllBehaviors()
         let targetPoint = CGPoint(x: 0, y: config.minYBound)
         moveSheet(to: targetPoint)
     }
     
     func collapse() {
-        guard let config = topSheetConfig else { return }
+        guard let config = configuration else {
+            return
+        }
+
         sheetAnimator.removeAllBehaviors()
         let targetPoint = CGPoint(x: 0, y: config.maxYBound)
         moveSheet(to: targetPoint)
@@ -194,22 +189,22 @@ public extension BottomSheetController {
 
 extension BottomSheetController: UIDynamicAnimatorDelegate {
     public func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
-        delegate?.bottomSheetAnimationDidEnd?(bottomSheetController: self, viewController: topSheetController!)
+        delegate?.bottomSheetAnimationDidEnd?(
+            bottomSheetController: self,
+            viewController: sheetController!
+        )
     }
     
     public func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator) {
-        delegate?.bottomSheetAnimationDidStart?(bottomSheetController: self, viewController: topSheetController!)
+        delegate?.bottomSheetAnimationDidStart?(
+            bottomSheetController: self,
+            viewController: sheetController!
+        )
     }
 }
 
 // MARK: - Private Methods
 private extension BottomSheetController {
-    func addSheet(_ sheet: UIViewController, configuration config: BottomSheetConfiguration) {
-        viewControllers.append(sheet)
-        configurations.append(config)
-        currentSheetIndex = viewControllers.count - 1
-    }
-    
     func prepareSheetForPresentation(_ sheet: UIViewController,
                                      configuration config: BottomSheetConfiguration,
                                      animated: Bool) {
@@ -223,11 +218,11 @@ private extension BottomSheetController {
     }
     
     func translateSheetView(with translation: CGPoint) {
-        guard let sheetView = topSheetView,
-            let config = topSheetConfig else {
-                return
+        guard let sheetView = sheetController?.view,
+            let config = configuration else {
+            return
         }
-        
+
         sheetView.frame.origin += translation
         sheetView.frame.size   = config.sizeOf(sheetView: sheetView)
         sheetView.layoutIfNeeded()
@@ -238,7 +233,7 @@ private extension BottomSheetController {
         view.addSubview(viewController.view)
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.didMove(toParentViewController: self)
-        topSheetConfig?.scrollableView?.panGestureRecognizer.require(toFail: panGesture)
+        configuration?.scrollableView?.panGestureRecognizer.require(toFail: panGesture)
     }
     
     func remove(childViewController viewController: UIViewController) {
@@ -248,12 +243,12 @@ private extension BottomSheetController {
     }
     
     func moveSheet(to target: CGPoint, velocity: CGPoint = .zero) {
-        guard let sheetController = topSheetController,
-            let sheetView = topSheetView,
-            var config = topSheetConfig else {
+        guard let sheetController = sheetController,
+            let sheetView = sheetController.view,
+            var config = configuration else {
                 return
         }
-        
+
         config.allowsContentScrolling = target.y == config.minYBound
         let currentY = sheetView.frame.minY
         let direction: BottomSheetPanDirection = target.y >= currentY ? .down : .up

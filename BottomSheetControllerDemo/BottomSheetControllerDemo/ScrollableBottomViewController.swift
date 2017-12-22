@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import BottomSheetController
 
 class ScrollableBottomViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+
+    let bottomSheetConfiguration    = BottomViewControllerConfiguration()
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        bottomSheetConfiguration.viewController = self
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        bottomSheetConfiguration.viewController = self
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.roundCorners([.topLeft, .topRight], radius: 12)

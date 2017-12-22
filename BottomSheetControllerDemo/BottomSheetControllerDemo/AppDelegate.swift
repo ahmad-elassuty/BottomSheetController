@@ -16,9 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let masterViewController = UIStoryboard.masterViewController
+//        let sheetViewController = UIStoryboard.scrollableBottomSheetViewController
+//        let configuration = sheetViewController.bottomSheetConfiguration
+//        let rootViewController = BottomSheetController(
+//            rootViewController: masterViewController,
+//            sheetViewController: sheetViewController,
+//            configuration: configuration
+//        )
+
         let rootViewController = BottomSheetController(rootViewController: masterViewController)
-        rootViewController.delegate = masterViewController.bottomSheetDelegate
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()

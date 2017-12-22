@@ -7,28 +7,34 @@
 //
 
 class BottomSheetBehavior: UIDynamicBehavior {
-    var item                : UIDynamicItem
-    var itemBehavior        : UIDynamicItemBehavior
-    var attachmentBehavior  : UIAttachmentBehavior
-    var targetPoint         : CGPoint               = .zero
-    var velocity            : CGPoint               = .zero
-    
-    init(item: UIDynamicItem, sheetConfiguration config: BottomSheetConfiguration, onAnimationStep: ((CGFloat) -> ())? = nil) {
-        self.item = item
-        itemBehavior        = UIDynamicItemBehavior(items: [item])
+    let item                : UIDynamicItem
+    let itemBehavior        : UIDynamicItemBehavior
+    let attachmentBehavior          : UIAttachmentBehavior
+    private(set) var targetPoint : CGPoint               = .zero
+    private(set) var velocity    : CGPoint               = .zero
+
+    init(item dynamicItem: UIDynamicItem,
+         sheetConfiguration config: BottomSheetConfiguration,
+         onAnimationStep: ((_ minY: CGFloat) -> Void)? = nil) {
+        item = dynamicItem
+        itemBehavior = UIDynamicItemBehavior(items: [item])
         attachmentBehavior  = UIAttachmentBehavior(item: item, attachedToAnchor: .zero)
         super.init()
+
         action = { [weak self] in
-            guard let view = self?.item as? UIView else { return }
-            var frame           = view.frame
-            frame.size          = config.sizeOf(sheetView: view)
-            view.frame          = frame
+            guard let view = self?.item as? UIView else {
+                return
+            }
+
+            var frame = view.frame
+            frame.size = config.sizeOf(sheetView: view)
+            view.frame = frame
             view.layoutIfNeeded()
             onAnimationStep?(frame.minY)
         }
+
         configureBehavior()
-        addChildBehavior(attachmentBehavior)
-        addChildBehavior(itemBehavior)
+        addBehaviors()
     }
     
     func updateTargetPoint(_ point: CGPoint) {
@@ -46,6 +52,11 @@ class BottomSheetBehavior: UIDynamicBehavior {
 
 // MARK: Private Methods
 private extension BottomSheetBehavior {
+    func addBehaviors() {
+        addChildBehavior(attachmentBehavior)
+        addChildBehavior(itemBehavior)
+    }
+
     func configureBehavior() {
         configureAttachementBehavior()
         configureItemBehavior()

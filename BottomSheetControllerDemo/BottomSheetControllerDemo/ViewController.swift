@@ -15,21 +15,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var blueView : UIView!
     
     let bottomSheetDelegate         = BottomViewControllerDelegate()
-    let bottomSheetConfiguration    = BottomViewControllerConfiguration()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        bottomSheetDelegate.viewController = self
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         bottomSheetDelegate.viewController = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let sheetController = parent as? BottomSheetController {
+
+        if let sheetController = bottomSheetController {
             let sheetViewController = UIStoryboard.scrollableBottomSheetViewController
-            bottomSheetConfiguration.viewController = sheetViewController
+            let sheetConfiguration = sheetViewController.bottomSheetConfiguration
             sheetController.present(sheetViewController,
-                                    configuration: bottomSheetConfiguration,
-                                    animated: animated)
+                                    configuration: sheetConfiguration,
+                                    animated: false)
         }
     }
     
